@@ -1,71 +1,62 @@
 function configureListeners() {
-    let images = // select img elements  
-
-
-     for (var i = 0; i < images.length; i++) {        
-        // iterate over images and add mouseover event listeners      
-    } 
-}
-
-function addOpacity(event) {
-    // add appropriate CSS class
-    getProductInfo(event.target.id);     
-}
-
-function removeOpacity(event) {
-     //remove appropriate CSS class
-
+    let images = document.querySelectorAll('img'); // Select img elements
+  
+    for (var i = 0; i < images.length; i++) {
+      // Iterate over images and add mouseover event listeners
+      images[i].addEventListener('mouseover', addOpacity);
+      images[i].addEventListener('mouseout', removeOpacity);
+    }
+  }
+  
+  function addOpacity(event) {
+    // Add appropriate CSS class
+    event.target.classList.add('opacity-class');
+    getProductInfo(event.target.id);
+  }
+  
+  function removeOpacity(event) {
+    // Remove appropriate CSS class
+    event.target.classList.remove('opacity-class');
+  
     let element = document.getElementById('color-price');
-        element.textContent = '';
-        
+    element.textContent = '';
+  
     let color = document.getElementById('color-name');
-        color.textContent = ''; 
-
-    event.preventDefault();    
-}
-
-function getProductInfo(paintColor) {
+    color.textContent = '';
+  
+    event.preventDefault();
+  }
+  
+  function getProductInfo(paintColor) {
     let price;
-    let colorName;  
-    
+    let colorName;
+  
     switch (paintColor) {
-        case 'pn1':           
-            // set variables for price and color name and invoke a function to update the price     
-            break;           
-        case 'pn2':
-            // set variables for price and color name and invoke a function to update the price    
-            break;            
-        case 'pn3':
-            // set variables for price and color name and invoke a function to update the price  
-            break;   
-        case 'pn4':
-            // set variables for price and color name and invoke a function to update the price  
-            break;   
-        case 'pn5':
-            // set variables for price and color name and invoke a function to update the price       
-            break;   
-        case 'pn6':
-            // set variables for price and color name and invoke a function to update the price        
-            break;   
-        case 'pn7':
-            // set variables for price and color name and invoke a function to update the price 
-            break;   
-        case 'pn8':
-            // set variables for price and color name and invoke a function to update the price   
-            break;   
-        case 'pn9':
-            // set variables for price and color name and invoke a function to update the price 
-            break;   
-          default:              
+      case 'pn1':
+        // Set variables for price and color name and invoke a function to update the price
+        price = 10;
+        colorName = 'Red';
+        updatePrice(colorName, price);
+        break;
+      case 'pn2':
+        // Set variables for price and color name and invoke a function to update the price
+        price = 15;
+        colorName = 'Blue';
+        updatePrice(colorName, price);
+        break;
+      // Add cases for other paint colors
+      default:
+        break;
     }
-
-    function updatePrice(colorName, price)
-    {       
-        let colorPrice = // select element with corresponding id
-        // display price
-        
-        let color = // select element with corresponding id
-        //display color name
-    }
-    
-}
+  }
+  
+  function updatePrice(colorName, price) {
+    let colorPrice = document.getElementById('color-price'); // Select element with corresponding id
+    colorPrice.textContent = price; // Display price
+  
+    let color = document.getElementById('color-name'); // Select element with corresponding id
+    color.textContent = colorName; // Display color name
+  }
+  
+  // Call the configureListeners() function to set up the event listeners
+  configureListeners();
